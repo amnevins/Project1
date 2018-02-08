@@ -3,7 +3,7 @@ const sns = new AWS.SNS();
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
 	console.log(event.queryStringParameters);
-	const b64DecodedData = Buffer.from(event.queryStringParameters, 'base64').toString();
+	const b64DecodedData = Buffer.from(event.queryStringParameters.data, 'base64').toString();
 	console.log(b64DecodedData)
 	const dataEvent = decodeURIComponent(b64DecodedData);
 	console.log(dataEvent)
