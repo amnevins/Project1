@@ -2,10 +2,13 @@ let AWS = require('aws-sdk');
 const sns = new AWS.SNS();
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
-	console.log(event)
+	const b64EncodedData = decodeURIComponent(event.queryStringParameters);
+	const dataEvent = Buffer.from(b64EncodedData, 'base64').toString();
+
+	console.log(dataEvent)
 	ddb.get({
 		TableName: 'DoughnutInventory',
-		Key: { 'type': 'event.doughnut.type' }
+		Key: { 'type': 'dataEvent.doughnut.type' }
 	}, function (err, data) {
 		if (err) {
 			console.log('oh noeees doughnut fetching error ', err, err.stack)
@@ -18,7 +21,7 @@ exports.handler = function (event, context, callback) {
 				MessageAttributes: {
 					'type': {
 						DataType: 'String',
-						StringValue: 'event.doughnut.type'
+						StringValue: 'dataEvent.doughnut.type'
 					},
 				},
 				MessageStructure: 'String',
@@ -38,10 +41,8 @@ exports.handler = function (event, context, callback) {
 				"content-type": "application/json"
 			},
 			"body": {
-				"data": `${event.doughnut.type} recorded`
+				"data": `${dataEvent.doughnut.type} recorded`
 			}
 		});
 	});
-
-	callback(null, 'Successfully executed');
 }
