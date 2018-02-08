@@ -18,7 +18,7 @@ exports.handler = function (event, context, callback) {
 					'type': {
 						DataType: 'String',
 						StringValue: 'event.doughnut.type'
-					},
+					}
 				},
 				MessageStructure: 'String',
 				TopicArn: 'arn:aws:sns:us-east-1:131603044023:doughnut_shop'
