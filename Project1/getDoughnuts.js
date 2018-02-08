@@ -2,10 +2,10 @@ let AWS = require('aws-sdk');
 const sns = new AWS.SNS();
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
-	
+	console.log(event.queryStringParameters);
 	const b64DecodedData = Buffer.from(event.queryStringParameters, 'base64').toString();
+	console.log(b64DecodedData)
 	const dataEvent = decodeURIComponent(b64DecodedData);
-
 	console.log(dataEvent)
 	ddb.get({
 		TableName: 'DoughnutInventory',
@@ -15,7 +15,6 @@ exports.handler = function (event, context, callback) {
 			console.log('oh noeees doughnut fetching error ', err, err.stack)
 		} else {
 			console.log('yesss doughnuts ', data);
-		
 			sns.publish({
 				Message: 'I have some type of doughnuts for ya!',
 				Subject: 'I have some doughnuts',
