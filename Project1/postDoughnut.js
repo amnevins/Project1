@@ -2,7 +2,7 @@ let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
 	console.log(event);
-	// console.log(event.body);
+	console.log(event.body);
 
 	const errorCallback = {
 		"isBase64Encoded": 1,
@@ -39,11 +39,6 @@ exports.handler = function (event, context, callback) {
 	
 	return callback(null, {
 		"statusCode": 200,
-		"headers": {
-			"Content-Type": "application/json"
-		},
-		"body": JSON.stringify({
-			"data": `doughnut recorded`
-		})
+		"body": "hello"
 	});
 }
