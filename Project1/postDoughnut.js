@@ -15,7 +15,7 @@ exports.handler = function (event, context, callback) {
 		}
 	}
 	const successCallback = {
-		"isBase64Encoded": 1,
+		"isBase64Encoded": 0,
 		"statusCode": 200,
 		"headers": {
 			"content-type": "application/json"
