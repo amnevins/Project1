@@ -33,8 +33,9 @@ exports.handler = function (event, context, callback) {
 			"content-type": "application/json"
 		},
 		"body": {
-			"data": `${dataEvent.doughnut.type} recorded`
+			"data": `doughnut recorded`
 		}
 	}
+	
 	callback(null, successCallback);
 }
