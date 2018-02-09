@@ -31,7 +31,7 @@ exports.handler = function (event, context, callback) {
 			callback(JSON.stringify(errorCallback));
 		} else {
 			console.log('da data is ', data);
-			callback(null, successCallback);
+			callback(null, JSON.stringify(successCallback));
 		}
 	});
 
