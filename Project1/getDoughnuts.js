@@ -6,7 +6,12 @@ exports.handler = function (event, context, callback) {
 	const b64DecodedData = Buffer.from(event.queryStringParameters.data, 'base64').toString();
 	console.log(b64DecodedData)
 	const dataEvent = decodeURIComponent(b64DecodedData);
-	console.log(dataEvent)
+	for(var prop in dataEvent) {
+		if(dataEvent.hasOwnProperty(prop)) {
+			console.log("property in data event ", prop);
+		}
+	}
+	console.log(dataEvent.doughnut)
 	ddb.get({
 		TableName: 'DoughnutInventory',
 		Key: { 'type': 'dataEvent.doughnut.type' }
