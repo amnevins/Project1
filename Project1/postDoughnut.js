@@ -37,5 +37,13 @@ exports.handler = function (event, context, callback) {
 	// 	}
 	// });
 	
-	return callback(null, successCallback);
+	return callback(null, {
+		"statusCode": 200,
+		"headers": {
+			"Content-Type": "application/json"
+		},
+		"body": {
+			"data": `doughnut recorded`
+		}
+	});
 }
