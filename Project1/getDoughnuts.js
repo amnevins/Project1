@@ -8,7 +8,7 @@ exports.handler = function (event, context, callback) {
 	const dataEvent = decodeURIComponent(b64DecodedData);
 	for(var prop in dataEvent) {
 		if(dataEvent.hasOwnProperty(prop)) {
-			console.log("property in data event ", prop);
+			console.log("property in data event ", prop, dataEvent[prop]);
 		}
 	}
 	console.log(dataEvent.doughnut)
