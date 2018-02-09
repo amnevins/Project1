@@ -26,7 +26,7 @@ exports.handler = function (event, context, callback) {
 	}
 	ddb.put({
 		TableName: 'DoughnutInventory',
-		Item: { 'type': 'test' }
+		Item: { 'type': event.body.doughnut.type }
 	}, function (err, data) {
 		if (err) {
 			console.log('error putting to table ', err, err.stack)
