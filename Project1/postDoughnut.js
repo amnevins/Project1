@@ -3,18 +3,6 @@ const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
 	console.log(event);
 	console.log(event.body);
-	ddb.put({
-		TableName: 'DoughnutInventory',
-		Item: { 'type': 'test' }
-	}, function (err, data) {
-		if (err) {
-			console.log('error putting to table ', err, err.stack)
-			callback(null, errorCallback);
-		} else {
-			console.log(data);
-			callback(null, successCallback);
-		}
-	});
 
 	const errorCallback = {
 		"isBase64Encoded": 1,
@@ -36,6 +24,18 @@ exports.handler = function (event, context, callback) {
 			"data": `doughnut recorded`
 		}
 	}
+	// ddb.put({
+	// 	TableName: 'DoughnutInventory',
+	// 	Item: { 'type': 'test' }
+	// }, function (err, data) {
+	// 	if (err) {
+	// 		console.log('error putting to table ', err, err.stack)
+	// 		callback(null, errorCallback);
+	// 	} else {
+	// 		console.log(data);
+	// 		callback(null, successCallback);
+	// 	}
+	// });
 	
 	callback(null, successCallback);
 }
