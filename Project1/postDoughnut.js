@@ -9,9 +9,9 @@ exports.handler = function (event, context, callback) {
 		"headers": {
 			"content-type": "application/json"
 		},
-		"body": {
+		"body": JSON.stringify({
 			"data": 'oops we got problems'
-		}
+		})
 	}
 	const successCallback = {
 		"statusCode": 200,
