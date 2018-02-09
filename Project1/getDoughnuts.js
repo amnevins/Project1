@@ -4,11 +4,11 @@ const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
 	console.log(event.queryStringParameters);
 	const b64DecodedData = Buffer.from(event.queryStringParameters.data, 'base64').toString();
-	console.log(b64DecodedData, "string b64decoded " + b64DecodedData.toString(), "join b64decoded " + b64DecodedData.join(''));
+	console.log(b64DecodedData, "string b64decoded " + b64DecodedData.toString(), "type b64decoded " + typeof b64DecodedData);
 	const dataEvent = decodeURI(b64DecodedData);
-	console.log(dataEvent)
+	console.log(dataEvent, console.log(JSON.parse(dataEvent)))
 	console.log("is array? ", Array.isArray(dataEvent));
-	for(var prop in dataEvent) {
+	for(var prop in JSON.parse(dataEvent)) {
 		if(dataEvent.hasOwnProperty(prop)) {
 			console.log("property in data event ", prop, dataEvent[prop]);
 		}
