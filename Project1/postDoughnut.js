@@ -10,7 +10,7 @@ exports.handler = function (event, context, callback) {
 			"content-type": "application/json"
 		},
 		"body": {
-			"data": `oops we got problems`
+			"data": 'oops we got problems'
 		}
 	}
 	const successCallback = {
@@ -18,9 +18,9 @@ exports.handler = function (event, context, callback) {
 		"headers": {
 			"content-type": "application/json"
 		},
-		"body": {
-			"data": `doughnut recorded`
-		}
+		"body": JSON.stringify({
+			"data": "doughnut recorded"
+		})
 	}
 	ddb.put({
 		TableName: 'DoughnutInventory',
@@ -28,7 +28,7 @@ exports.handler = function (event, context, callback) {
 	}, function (err, data) {
 		if (err) {
 			console.log('error putting to table ', err, err.stack)
-			callback(true, JSON.stringify(errorCallback));
+			callback(null, errorCallback);
 		} else {
 			console.log('da data is ', data);
 			callback(null, successCallback);
