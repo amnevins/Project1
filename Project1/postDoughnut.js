@@ -36,4 +36,5 @@ exports.handler = function (event, context, callback) {
 			"data": `${dataEvent.doughnut.type} recorded`
 		}
 	}
+	callback(null, successCallback);
 }
