@@ -6,7 +6,9 @@ exports.handler = function (event, context, callback) {
 	const b64DecodedData = Buffer.from(event.queryStringParameters.data, 'base64').toString();
 	console.log(b64DecodedData, "string b64decoded " + b64DecodedData.toString(), "type b64decoded " + typeof b64DecodedData);
 	const dataEvent = decodeURI(b64DecodedData);
-	console.log(dataEvent, console.log(JSON.parse(dataEvent)))
+	const check = JSON.parse(dataEvent);
+	console.log('parse check ', check)
+	console.log('type of dataevent after uri decode ' + typeof dataEvent)
 	console.log("is array? ", Array.isArray(dataEvent));
 	for(var prop in JSON.parse(dataEvent)) {
 		if(dataEvent.hasOwnProperty(prop)) {
