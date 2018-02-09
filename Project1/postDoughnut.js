@@ -42,8 +42,8 @@ exports.handler = function (event, context, callback) {
 		"headers": {
 			"Content-Type": "application/json"
 		},
-		"body": {
+		"body": JSON.stringify({
 			"data": `doughnut recorded`
-		}
+		})
 	});
 }
