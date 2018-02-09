@@ -30,7 +30,7 @@ exports.handler = function (event, context, callback) {
 	}, function (err, data) {
 		if (err) {
 			console.log('error putting to table ', err, err.stack)
-			callback(null, errorCallback);
+			callback(errorCallback);
 		} else {
 			console.log(data);
 			callback(null, successCallback);
