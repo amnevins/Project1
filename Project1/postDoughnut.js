@@ -18,9 +18,9 @@ exports.handler = function (event, context, callback) {
 		"headers": {
 			"content-type": "application/json"
 		},
-		"body": {
+		"body": JSON.stringify({
 			'data': 'doughnut recorded'
-		)
+		})
 	}
 	ddb.put({
 		TableName: 'DoughnutInventory',
