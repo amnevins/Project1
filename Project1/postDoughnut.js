@@ -28,10 +28,10 @@ exports.handler = function (event, context, callback) {
 	}, function (err, data) {
 		if (err) {
 			console.log('error putting to table ', err, err.stack)
-			callback(JSON.stringify(errorCallback));
+			callback(true, JSON.stringify(errorCallback));
 		} else {
 			console.log('da data is ', data);
-			callback(null, JSON.stringify(successCallback));
+			callback(null, successCallback);
 		}
 	});
 
