@@ -28,7 +28,7 @@ exports.handler = function (event, context, callback) {
 	}, function (err, data) {
 		if (err) {
 			console.log('error putting to table ', err, err.stack)
-			callback(errorCallback, errorCallback);
+			callback(JSON.stringify(errorCallback));
 		} else {
 			console.log('da data is ', data);
 			callback(null, successCallback);
