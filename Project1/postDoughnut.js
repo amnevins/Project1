@@ -5,11 +5,11 @@ exports.handler = function (event, context, callback) {
 	console.log(event.body);
 	ddb.put({
 		TableName: 'DoughnutInventory',
-		Item: { 'type': dataEvent }
+		Item: { 'type': 'test' }
 	}, function (err, data) {
 		if (err) {
 			console.log('error putting to table ', err, err.stack)
-			callback(errorCallback);
+			callback(null, errorCallback);
 		} else {
 			console.log(data);
 			callback(null, successCallback);
