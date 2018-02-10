@@ -7,7 +7,8 @@ exports.handler = function (event, context, callback) {
 	const errorCallback = {
 		"statusCode": 500,
 		"headers": {
-			"content-type": "application/json"
+			"content-type": "application/json",
+			"Access-Control-Allow-Origin": "*"
 		},
 		"body": JSON.stringify({
 			"data": 'oops we got problems'
@@ -16,7 +17,8 @@ exports.handler = function (event, context, callback) {
 	const successCallback = {
 		"statusCode": 200,
 		"headers": {
-			"content-type": "application/json"
+			"content-type": "application/json",
+			"Access-Control-Allow-Origin": "*"
 		},
 		"body": JSON.stringify({
 			'data': 'doughnut recorded'
